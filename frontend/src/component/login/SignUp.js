@@ -8,7 +8,8 @@ import { toast } from "react-toastify";
 import DataContext from "../../context/DataContext";
 
 
-function SignUp() {
+function SignUp({ toggleRef }) {
+
   function generateUniqueUsername(username) {
     const randomDigits = Math.floor(1000 + Math.random() * 9000);
     const uniqueUsername = `${username}` + "_" + `${randomDigits}`;
@@ -43,48 +44,75 @@ function SignUp() {
     setFormErrors(validate(formValues));
 
     if (Object.keys(formErrors).length === 0) {
-      const signUpData={
+      const data={
         name:formValues.name,
         email:formValues.email,
         password:formValues.password,
         confirmPassword:formValues.confirmPassword,
         username:formValues.username,
       }
-      //console.log("signUpData= ",signUpData);
+      //console.log("signUpData= ",signUpData)
       try {
-        //console.log("formValues= ",formValues);
-        setData(signUpData);
-    
-        const res=await axios.post(`${process.env.REACT_APP_API}/api/v1/sendotp`,
-        { email});
-        //console.log("otp status= ",res.data.success);
-        //console.log("data= ",data);
 
-        if(res.data.success)
+      const response = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/signup`,
         {
-          toast.success(res.data.message);
-
-          navigate("/otp");
+          name: data.name,
+          email: data.email,
+          password: data.password,
+          confirmPassword: data.confirmPassword,
+          username: data.username,
         }
-        else
-        {
-          toast.warning(res.data.message);
-        }
+      );
 
-        /*if (res && res.data.success) {
-          toast.success("registered successfully");
-          navigate("/");
-        } else {
-          toast.warning(res.data.message);
-          if (res.data.message === "Username already registered") {
-            toast.success(generateUniqueUsername(username) + " is available");
-
-            //console.log(generateUniqueUsername(username));
-          }
-        }*/
-      } catch (error) {
-        toast.warning(error);
+      if (response.data.success) {
+        toast.success("Signup successful!");
+        if (toggleRef?.current) {
+      toggleRef.current.checked = false;
+    }
+        
+        // navigate("/"); // Redirect to the login page after successful signup
+      } else {
+        toast.warning(response.data.message);
       }
+    } catch (error) {
+      toast.warning("Error during signup:", error.message);
+    }
+
+
+      // try {
+      //   //console.log("formValues= ",formValues);
+      //   setData(signUpData);
+    
+      //   const res=await axios.post(`${process.env.REACT_APP_API}/api/v1/sendotp`,
+      //   { email});
+      //   //console.log("otp status= ",res.data.success);
+      //   //console.log("data= ",data);
+
+      //   if(res.data.success)
+      //   {
+      //     toast.success(res.data.message);
+      //     navigate("/otp");
+      //   }
+      //   else
+      //   {
+      //     toast.warning(res.data.message);
+      //   }
+
+      //   /*if (res && res.data.success) {
+      //     toast.success("registered successfully");
+      //     navigate("/");
+      //   } else {
+      //     toast.warning(res.data.message);
+      //     if (res.data.message === "Username already registered") {
+      //       toast.success(generateUniqueUsername(username) + " is available");
+
+      //       //console.log(generateUniqueUsername(username));
+      //     }
+      //   }*/
+      // } catch (error) {
+      //   toast.warning(error);
+      // }
     }
   };
 

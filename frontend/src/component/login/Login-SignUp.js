@@ -5,7 +5,9 @@ import SignUp from "./SignUp";
 import logo from "./logo.png";
 
 const LoginSignUp = () => {
+   const toggleRef = React.useRef(null);
   return (
+    
     <div className="container">
       <div className="login-logo">
         <img src={logo} />
@@ -14,7 +16,7 @@ const LoginSignUp = () => {
       <div class="wrapper">
         <div class="card-switch">
           <label class="switch">
-            <input type="checkbox" class="toggle" />
+            <input ref={toggleRef} type="checkbox" className="toggle" />
             <span class="slider"></span>
             <span class="card-side"></span>
             <div class="flip-card__inner">
@@ -23,7 +25,7 @@ const LoginSignUp = () => {
               </div>
 
               <div class="flip-card__back">
-                <SignUp />
+               <SignUp toggleRef={toggleRef}/>
               </div>
             </div>
           </label>
