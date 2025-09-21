@@ -16,7 +16,7 @@ export const signup = async (req, res) => {
     const { name, email, username, password, otp } = req.body;
     console.log(name,email,username,password,otp);
 
-    if (!name || !email || !username || !password || !otp ) {
+    if (!name || !email || !username || !password ) {
       return res.status(403).json({
         success: false,
         message: "All fields are required",
@@ -46,26 +46,7 @@ export const signup = async (req, res) => {
       return res;
     }
 
-    //find most recent OTP stored for the user
-    const recentOtp = await OTP.find({ email })
-      .sort({ createdAt: -1 })
-      .limit(1);
-      console.log("email",email);
-    console.log("otp= ",recentOtp);
-    //validate OTP
-    if (recentOtp.length == 0) {
-      //OTP not found
-      return res.status(400).json({
-        success: false,
-        message: "OTP not Found",
-      });
-    } else if (otp !== recentOtp[0].otp) {
-      //Invalid OTP
-      return res.status(400).json({
-        success: false,
-        message: "Invalid OTP",
-      });
-    }
+    
 
     const hashedPassword = await hashPassword(password);
 
@@ -141,7 +122,7 @@ export const login = async (req, res) => {
       id: user._id,
       email:user.email
     };
-    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+    const token = jwt.sign(payload,process.env.JWT_SECRET, {
       expiresIn: "24h",
     });
     user = user.toObject();

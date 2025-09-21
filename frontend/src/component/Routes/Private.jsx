@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from '../../context/auth.js';
+import { useAuth } from '../../context/auth.jsx';
 import { Route, Navigate } from 'react-router-dom';
 import axios from 'axios';
-import Spinner from './../Spinner.js';
+import Spinner from '../Spinner.jsx';
 
 export default function PrivateRoute({ path, element }) {
   const [ok, setOk] = useState(false);
@@ -11,7 +11,7 @@ export default function PrivateRoute({ path, element }) {
   useEffect(() => {
     const authCheck = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API}/api/v1/user-auth`);
+        const res = await axios.get(`${import.meta.env.VITE_API}/api/v1/user-auth`);
         if (res.data.ok) {
           setOk(true);
         } else {

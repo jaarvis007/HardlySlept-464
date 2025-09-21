@@ -1,17 +1,17 @@
 import { useContext, useEffect, useState } from "react";
-import ChatBox from "./ChatBox";
-import Timer from "./Timer";
-import SocketContext from "../../context/SocketContext";
-import GameContext from "../../context/GameContext";
-import Player from "./Player";
-import GameResult from "./GameResult.js";
-import DrawingCanvas from "../Game/DrawingCanvas.js";
-import Logout from "../login/Logout";
-import { useAuth } from "../../context/auth";
+import ChatBox from "./ChatBox.jsx";
+import Timer from "./Timer.jsx";
+import SocketContext from "../../context/SocketContext.jsx";
+import GameContext from "../../context/GameContext.jsx";
+import Player from "./Player.jsx";
+import GameResult from "./GameResult.jsx";
+import DrawingCanvas from "./DrawingCanvas.jsx";
+import Logout from "../login/Logout.jsx";
+import { useAuth } from "../../context/auth.jsx";
 import "./Game.css";
-import RoundResult from "./RoundResult.js";
+import RoundResult from "./RoundResult.jsx";
 import timeIcon from "../Assets/clock.png";
-import LeaveBtn from "../login/LeaveBtn.js";
+import LeaveBtn from "../login/LeaveBtn.jsx";
 var i = 0;
 
 function Game() {

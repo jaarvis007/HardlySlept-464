@@ -29,7 +29,7 @@ function Login(){
         {
             toast.warning("Enter your email");
         }
-        const res=await axios.post(`${process.env.REACT_APP_API}/api/v1/reset-password-token`,{email});
+        const res=await axios.post(`${import.meta.env.VITE_API}/api/v1/reset-password-token`,{email});
 
         console.log(res.data.success);
 
@@ -44,8 +44,9 @@ function Login(){
         setFormErrors(validate(formValues));
     
         try {
+            
           const res = await axios.post(
-            `${process.env.REACT_APP_API}/api/v1/login`,
+            `${import.meta.env.VITE_API}/api/v1/login`,
             {email,password} 
           );
     
@@ -65,6 +66,7 @@ function Login(){
                 alert("not logged in")
           }
         } catch (erorr) {
+            console.error(erorr)
             toast.warning("Something went wrong");
             
         }

@@ -1,16 +1,16 @@
 // import logo from './logo.svg';
 import './App.css';
-import Sample from './component/login/Login-SignUp.js';
-import Login from './component/login/Login.js'
-import SignUp from './component/login/SignUp.js'
+import Sample from './component/login/Login-SignUp.jsx';
+import Login from './component/login/Login.jsx'
+import SignUp from './component/login/SignUp.jsx'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {Routes,Route} from "react-router-dom";
-import Homepage from './component/login/HomePage.js';
-import PrivateRoute from './component/Routes/Private.js';
-import GameRoom from './component/Game/GameRoom.js';
-import Otp from './component/login/Otp.js';
-import Profile from './component/login/Profile.js';
+import Homepage from './component/login/HomePage.jsx';
+import PrivateRoute from './component/Routes/Private.jsx';
+import GameRoom from './component/Game/GameRoom.jsx';
+import Otp from './component/login/Otp.jsx';
+import Profile from './component/login/Profile.jsx';
 
 
 function App() {

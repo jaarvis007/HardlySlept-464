@@ -39,6 +39,8 @@ function SignUp({ toggleRef }) {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+
+   
     e.preventDefault();
     setIsSubmit(true);
     setFormErrors(validate(formValues));
@@ -53,9 +55,9 @@ function SignUp({ toggleRef }) {
       }
       //console.log("signUpData= ",signUpData)
       try {
-
+         
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/api/v1/signup`,
+        `${import.meta.env.VITE_API}/api/v1/signup`,
         {
           name: data.name,
           email: data.email,
@@ -84,7 +86,7 @@ function SignUp({ toggleRef }) {
       //   //console.log("formValues= ",formValues);
       //   setData(signUpData);
     
-      //   const res=await axios.post(`${process.env.REACT_APP_API}/api/v1/sendotp`,
+      //   const res=await axios.post(`${import.meta.env.VITE_API}/api/v1/sendotp`,
       //   { email});
       //   //console.log("otp status= ",res.data.success);
       //   //console.log("data= ",data);

@@ -93,7 +93,7 @@ export const updateDisplayPicture = async (req, res) => {
       const userId = req.user.id
       const image = await imageUploader(
         displayPicture,
-        process.env.FOLDER_NAME,
+       process.env.FOLDER_NAME,
         1000,
         1000
       )

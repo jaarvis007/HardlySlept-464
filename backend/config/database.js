@@ -14,7 +14,7 @@ const dbConnect = async () => {
     .catch((error) => {
       console.log("connection failed");
       console.log(error.message);
-      process.exit(1);
+      import.meta.exit(1);
     });
 };
 export default dbConnect;

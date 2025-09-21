@@ -34,7 +34,7 @@ const MyComponent = () => {
     else {
       const res = await axios
         .put(
-          `${process.env.REACT_APP_API}/api/v1/profile/updateProfile`,
+          `${import.meta.env.VITE_API}/api/v1/profile/updateProfile`,
           formData
         )
         .then((response) => {
@@ -50,7 +50,7 @@ const MyComponent = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/api/v1/get-user`
+          `${import.meta.env.VITE_API}/api/v1/get-user`
         );
 
         console.log("retrieved user= ", response.data.image);
@@ -75,7 +75,7 @@ const MyComponent = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API}/api/v1/getGames`
+          `${import.meta.env.VITE_API}/api/v1/getGames`
         );
         setData(response.data);
       } catch (error) {
@@ -98,7 +98,7 @@ const MyComponent = () => {
     if (confirmDelete) {
       try {
         const res = await axios.delete(
-          `${process.env.REACT_APP_API}/api/v1/profile/deleteProfile`
+          `${import.meta.env.VITE_API}/api/v1/profile/deleteProfile`
         );
 
         if (res.data.success) {

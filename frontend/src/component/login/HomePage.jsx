@@ -17,7 +17,7 @@ const Homepage = () => {
     const authCheck = async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/api/v1/user-auth`
+          `${import.meta.env.VITE_API}/api/v1/user-auth`
         );
         if (res.data.ok) {
           setOk(true);

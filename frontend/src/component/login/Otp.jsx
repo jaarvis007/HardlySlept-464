@@ -16,7 +16,7 @@ function Otp() {
     try {
       console.log("data= ", data);
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/api/v1/signup`,
+        `${import.meta.env.VITE_API}/api/v1/signup`,
         {
           name: data.name,
           email: data.email,
