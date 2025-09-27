@@ -44,7 +44,7 @@ const RoomHandler = () => {
       params.get("room") != null
     ) {
       roomurl = params.get("room");
-      const socketTemp = io.connect("http://localhost:3001");
+      const socketTemp = io.connect(import.meta.env.VITE_API);
       setSocket(socketTemp);
     }
     if (
@@ -84,13 +84,13 @@ const RoomHandler = () => {
 
   function createRoomFun(type) {
     console.log("createRoom button");
-    const socketTemp = io.connect("http://localhost:3001");
+    const socketTemp = io.connect(import.meta.env.VITE_API);
     setSocket(socketTemp);
     const data = { type: type, user: auth.user.username };
     setCreateRoom(data);
   }
   function joinRoomFun(type) {
-    const socketTemp = io.connect("http://localhost:3001");
+    const socketTemp = io.connect(import.meta.env.VITE_API);
     setSocket(socketTemp);
     const data = { type: type, user: auth.user.username, room: room };
     setJoinRoom(data);
