@@ -639,15 +639,22 @@ app.use("/api/v1/profile", Profile);
 app.get("/", (req, res) => {
   res.send(`<h1>Welcome to Scribble Game Backend</h1>`);
 });
-server.listen(process.env.Socket, () => {
-  console.log("Our Sockeet io server");
-});
+// server.listen(process.env.Socket, () => {
+//   console.log("Our Sockeet io server");
+// });
+
+// const PORT = process.env.PORT || 5000;
+
+// app.listen(PORT, () => {
+//   console.log(`SERVER RUNNING ON ${PORT}`);
+// });
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`SERVER RUNNING ON ${PORT}`);
+server.listen(PORT, () => {
+  console.log(`🚀 Server with APIs + Socket.IO running on port ${PORT}`);
 });
+
 dbConnect();
 
 
